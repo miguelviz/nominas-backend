@@ -22,6 +22,12 @@ app.post("/getWorkers",(req, res)=>{
 app.post("/createWorker",(req, res)=>{
     Backend.API.POST.CreateWorker({req,res});
 })
+app.post("/addPackages",(req, res)=>{
+    Backend.API.POST.AddPackages({req,res});
+})
+app.post("/restartPackages",(req, res)=>{
+    Backend.API.POST.RestartPackages({req,res});
+})
 app.listen(port,()=>{
     const ServerOptions = require("./Utils/ServerOptions");
     console.log(`<< Rinku Server >> (( Starting )) [[ In Port ${port} ]]`, ServerOptions);

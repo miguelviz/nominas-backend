@@ -9,10 +9,11 @@ const GetWorkers = async({req,res})=>{
     if(conn){
         let query = `
             SELECT 
-                a.names, a.first_sname, a.second_sname, a.month_packages, 
+                a.names, a.id_user AS ID, a.first_sname, a.second_sname, a.month_packages, 
                 b.name_user_type, b.hour_bonus
             FROM users a 
-            LEFT JOIN user_types b ON a.user_type = b.id_type`;
+            LEFT JOIN user_types b ON a.user_type = b.id_type
+            ORDER BY a.names ASC`;
         let list = await MYSQL.executeArrayQuery({conn,query}).catch(e=>{
             res.json({
                 error:"Error al consultar los usuarios."
@@ -27,6 +28,7 @@ const GetWorkers = async({req,res})=>{
             });
         }
     }
+    conn.close();
 }
 const getPayrollUsers = ({list})=>{
     const ServerOptions = require("../Utils/ServerOptions");
@@ -45,12 +47,12 @@ const getPayrollUsers = ({list})=>{
             }
             let one_porcent = Math.round((full_salary/100)*100)/100;
             let isr_total = Math.round((porcent*one_porcent)*100)/100;
-            full_salary = full_salary;
             user.salary = salary; 
             user.hours_worked_per_month = hours_worked_per_month;
             user.hour_bonus = user_hour_bonus;
             user.package_bonus = user_package_bonus;
-            user.full_salary = full_salary - isr_total;
+            user.full_salary = full_salary;
+            user.salary_total = full_salary - isr_total;
             user.isr_porcent = porcent;
             user.isr_total = isr_total;
         });

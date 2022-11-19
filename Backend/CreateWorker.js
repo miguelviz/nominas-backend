@@ -42,5 +42,6 @@ const CreateWorker = async({req,res})=>{
             })
         }
     }
+    conn.close();
 }
 module.exports = CreateWorker;
