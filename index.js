@@ -14,6 +14,10 @@ app.use((req, res, next) => {
     res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
     next();
 });
+//GET PRINCIPAL
+app.get(/.*/,function(req,res){
+    res.sendFile(__dirname+"/build/index.html");
+});
 const Backend = require("./Backend");
 //API PRINCIPAL
 app.post("/getWorkers",(req, res)=>{
@@ -28,6 +32,7 @@ app.post("/addPackages",(req, res)=>{
 app.post("/restartPackages",(req, res)=>{
     Backend.API.POST.RestartPackages({req,res});
 })
+//APP LISTEN
 app.listen(port,()=>{
     const ServerOptions = require("./Utils/ServerOptions");
     console.log(`<< Rinku Server >> (( Starting )) [[ In Port ${port} ]]`, ServerOptions);
