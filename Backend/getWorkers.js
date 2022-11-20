@@ -9,7 +9,7 @@ const GetWorkers = async({req,res})=>{
     if(conn){
         let query = `
             SELECT 
-                a.names, a.id_user AS ID, a.first_sname, a.second_sname, a.month_packages, 
+                a.names, a.id_user AS ID, a.work_number, a.first_sname, a.second_sname, a.month_packages, 
                 b.name_user_type, b.hour_bonus
             FROM users a 
             LEFT JOIN user_types b ON a.user_type = b.id_type
