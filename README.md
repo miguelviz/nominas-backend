@@ -1,5 +1,4 @@
-# NodeJS BACKEND README.
-Installation:
+# Installation:
     1.-Clone the proyect
     2.-Install dependencies (npm install)
     3.-start the proyect (npm start)
