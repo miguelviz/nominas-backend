@@ -1,10 +1,10 @@
-NodeJS BACKEND README.
+# NodeJS BACKEND README.
 Installation:
     1.-Clone the proyect
     2.-Install dependencies (npm install)
     3.-start the proyect (npm start)
 -----------------------------------------------------------------------------
-Principal params: 
+# Principal params: 
     route: ./Utils/ServerOptions.js
     params:{
         salary_worker:INT, 
@@ -15,7 +15,7 @@ Principal params:
         max_salary_extra:INT
     }
 -----------------------------------------------------------------------------
-Project Structure:
+# Project Structure:
     APIS:{
         GetWorkers,
         CreateWorker,
@@ -27,4 +27,5 @@ Project Structure:
         ./build 
     }
     program_type: [async-await] functional programming.
+    important_libraries: express - mysql2
 -----------------------------------------------------------------------------
